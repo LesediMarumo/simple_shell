@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 int main(void) {
     char *command = NULL;
     size_t bufsize = 0;
@@ -27,6 +28,8 @@ int main(void) {
             command[characters - 1] = '\0';
         if (strcmp(command, "exit") == 0)
             break;
+        else if (strcmp(command, "env") == 0)
+            print_environment();
         if (command[0] != '\0')
         {
             char *args[MAX_ARGS];
