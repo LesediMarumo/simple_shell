@@ -11,5 +11,6 @@
 
 void displayPrompt();
 int executeCommand(const char* command);
+void tokenizeCommand(char *command, char **args);
 
 #endif
