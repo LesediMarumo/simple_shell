@@ -11,6 +11,15 @@
 #define BUFFER_SIZE 1024
 #define MAX_ARGS 10
 #define INITIAL_BUFFER_SIZE 64
+#define MAX_COMMANDS 10
+#define MAX_ALIASES 50
+
+typedef struct AliasInfo {
+    char *name;
+    char *value;
+    struct AliasInfo *next;
+} AliasInfo;
+
 
 extern char **environ;
 
@@ -20,6 +29,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char* _strtok(char* str, const char* delim);
 void _handle_exit(char *command);
 int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
 void _cd(const char *path);
+void execute_commands(const char *commands);
+AliasInfo *find_alias(const char *name);
+void handle_alias_command(char **args);
+void set_alias(const char *name, const char *value);
+void print_alias(const char *name);
+void free_alias_list();
 
 #endif

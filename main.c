@@ -9,7 +9,7 @@ int main(void) {
     char *path_token = _strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
     int overwrite = 0;
-    
+
     while (1)
     {
         printf("simple_shell$ ");
@@ -38,9 +38,11 @@ int main(void) {
             tokenizeCommand(command, args);
             if (strcmp(args[0], "exit") == 0)
                 _handle_exit(args[0]);
-            if (strcmp(args[0], "setenv") == 0)
+            else if (strcmp(args[0], "alias") == 0)
+                handle_alias_command(args);
+            else if (strcmp(args[0], "setenv") == 0)
                 _setenv(args[1], args[2], overwrite);
-	     if (strcmp(args[0], "cd") == 0)
+            else if (strcmp(args[0], "cd") == 0)
                 _cd(args[1]);
             else if (fork() == 0)
             {
@@ -59,6 +61,7 @@ int main(void) {
             }
         }
     }
+    free_alias_list();
     free(command);
     return 0;
 }
