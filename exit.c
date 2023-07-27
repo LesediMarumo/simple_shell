@@ -7,10 +7,11 @@
 void _handle_exit(char *command)
 {
 	char *arg = _strtok(NULL, " ");
-	
+	int status;
+
 	if (arg != NULL)
 	{
-		int status = atoi(arg);
+		status = atoi(arg);
 		free(command);
 		exit(status);
 	}
