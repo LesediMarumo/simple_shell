@@ -12,7 +12,7 @@ char *_strtok(char *str, const char *delim)
 	char *token_start = NULL;
 	char *token_end = NULL;
 	bool end_of_string = false;
-	
+
 	if (str != NULL)
 		crnt_str = str;
 	if (crnt_str == NULL || end_of_string)
